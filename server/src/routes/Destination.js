@@ -33,6 +33,7 @@ router.post('/create/:itineraryByDateId', [
             error: errors.array()
         })
     }else{
+        console.log(timeOfStart)
         // const ChangeTimeOfStart = momentTimezone(req.body.timeOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
         // const ChangeTimeOfEnd = momentTimezone(req.body.timeOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
         const ChangeTimeOfStart = moment(req.body.timeOfStart).subtract(9, "h").format("YYYY-MM-DD HH:mm:ss")
@@ -44,8 +45,8 @@ router.post('/create/:itineraryByDateId', [
             title: req.body.title,
             address: req.body.address,
             category: req.body.category,
-            timeOfStart: ChangeTimeOfStart,
-            timeOfEnd: ChangeTimeOfEnd,
+            timeOfStart: req.body.timeOfStart,
+            timeOfEnd: req.body.timeOfEnd,
             description: req.body.description,
             cost: req.body.cost,
             destinationInfo: req.body.destinationInfo,
