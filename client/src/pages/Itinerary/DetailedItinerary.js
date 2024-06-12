@@ -421,8 +421,8 @@ function DetailedItinerary(){
     useEffect(() => {
         if(day.date){
             const itineraryByDateSearched = itinerary.itineraryByDateIds.find(itineraryByDate => {
-                console.log(moment(itineraryByDate.date).format())
-                console.log(moment(day.date).format())
+                console.log(moment(itineraryByDate.date).format("YY-MM-DD"))
+                console.log(moment(day.date).format("YY-MM-DD"))
                 return moment(itineraryByDate.date).format() === moment(day.date).format()
             })
             if(itineraryByDateSearched){
