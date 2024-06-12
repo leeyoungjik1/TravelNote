@@ -37,8 +37,10 @@ router.post('/create/:itineraryByDateId', [
         console.log(typeof req.body.timeOfStart)
         // const ChangeTimeOfStart = momentTimezone(req.body.timeOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
         // const ChangeTimeOfEnd = momentTimezone(req.body.timeOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
-        const ChangeTimeOfStart = moment(req.body.timeOfStart).local().format("YYYY-MM-DD HH:mm:ss")
-        const ChangeTimeOfEnd = moment(req.body.timeOfEnd).local().format("YYYY-MM-DD HH:mm:ss")
+        var stillUtc = moment.utc(req.body.timeOfStart).toDate();
+        var stillUtc2 = moment.utc(req.body.timeOfEnd).toDate();
+        const ChangeTimeOfStart = moment(stillUtc).local().format("YYYY-MM-DD HH:mm:ss")
+        const ChangeTimeOfEnd = moment(stillUtc2).local().format("YYYY-MM-DD HH:mm:ss")
 
         // destinationIds 배열에 새로 생성된 destination id값 추가
         const itineraryByDate = await ItineraryByDate.findById(req.params.itineraryByDateId).populate('destinationIds')
