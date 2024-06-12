@@ -42,7 +42,8 @@ router.post('/create/:itineraryId', [
             path: 'itineraryByDateIds',
             populate: {path: 'destinationIds'}
         })
-        const ChangeDate = momentTimezone(req.body.date).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+        // const ChangeDate = momentTimezone(req.body.date).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+        const ChangeDate = moment(req.body.date).subtract(9, "h").format("YYYY-MM-DD HH:mm:ss")
 
         const itineraryByDate = new ItineraryByDate({
             itineraryId: req.params.itineraryId,
