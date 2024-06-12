@@ -32,6 +32,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
         }
     }, [placeId])
     console.log(timeOfStart)
+    console.log(moment(timeOfStart))
     return (
         <div className={styles.destinationCardContainer}>
             <div className={styles.isDone}>{isDone ? "완료" : "예정"}</div>
