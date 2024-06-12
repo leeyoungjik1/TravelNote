@@ -14,7 +14,7 @@ const corsOptions = {
     credentials: true
 }
 
-mongoose.connect(config.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => console.log('데이터베이스 연결 성공'))
 .catch(e => console.log(`데이터베이스 연결 실패: ${e}`))
 
