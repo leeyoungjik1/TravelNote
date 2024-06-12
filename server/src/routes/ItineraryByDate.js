@@ -46,7 +46,7 @@ router.post('/create/:itineraryId', [
 
         const itineraryByDate = new ItineraryByDate({
             itineraryId: req.params.itineraryId,
-            date: req.body.date,
+            date: ChangeDate,
             accommodationName: req.body.accommodationName,
             accommodationAddress: req.body.accommodationAddress,
             accommodationCost: req.body.accommodationCost,

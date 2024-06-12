@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import moment from 'moment'
-import momentTimezone from 'moment-timezone'
 import styles from './DestinationCard.module.css'
 import ModDestinationCard from "./ModDestinationCard";
 import { IoMdTime } from "react-icons/io";
@@ -31,9 +30,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
             setImgSrc()
         }
     }, [placeId])
-    // console.log(timeOfStart)
-    // console.log(moment(timeOfStart).format())
-    // console.log(moment(timeOfStart).subtract(9, "h").format("HH:mm"))
+
     return (
         <div className={styles.destinationCardContainer}>
             <div className={styles.isDone}>{isDone ? "완료" : "예정"}</div>
@@ -50,7 +47,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
                         category === '미정' && `${styles.tbd}`
                     }>{category}</div>
                     <div className={styles.time}>
-                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).format("HH:mm")} ~ {moment(timeOfEnd).format("HH:mm")}
+                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).format('HH:mm')} ~ {moment(timeOfEnd).format('HH:mm')}
                     </div>
                     <div className={styles.title}>{title}</div>
                     <div>{address}</div>
