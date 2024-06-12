@@ -21,19 +21,8 @@ import {
   NotFound } from './pages'
 
 function App() {
-  // const [user, setUser] = useState(null)
-  // useEffect(() => {
-  //   const BASE_URL = 'https://travel-note-nine.vercel.app/'
-   
-  //   fetch(BASE_URL)
-  //   .then(res => res.text())
-  //   .then(result => setUser(result))
-  // })
-
-
   return (
     <div className={styles.App}>
-      {/* {user? user : "로딩중..."} */}
       <GNB/>
       <Routes>
         <Route exact path='/' element={<Home/>}/>
