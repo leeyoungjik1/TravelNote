@@ -381,7 +381,7 @@ function DetailedItinerary(){
     useEffect(() => {
         if(day.date){
             const itineraryByDateSearched = itinerary.itineraryByDateIds.find(itineraryByDate => {
-                return moment(itineraryByDate.date).format() === moment(day.date).format()
+                return moment(itineraryByDate.date).format("YY-MM-DD") === moment(day.date).format("YY-MM-DD")
             })
             // console.log(itineraryByDateSearched)
             if(itineraryByDateSearched){
@@ -442,7 +442,7 @@ function DetailedItinerary(){
             })
             .then((res) => {
                 const itineraryByDateSearched = res.data.itineraryByDateIds.find(itineraryByDate => {
-                    return moment(itineraryByDate.date).format() === moment(day.date).format()
+                    return moment(itineraryByDate.date).format("YY-MM-DD") === moment(day.date).format("YY-MM-DD")
                 })
                 setItinerary(res.data)
                 setItineraryByDate(itineraryByDateSearched)
