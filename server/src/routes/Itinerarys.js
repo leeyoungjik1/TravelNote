@@ -38,14 +38,16 @@ router.post('/create', [
             error: errors.array()
         })
     }else{
-        const ChangeDateOfStart = momentTimezone(req.body.dateOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
-        const ChangeDateOfEnd = momentTimezone(req.body.dateOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+        // const ChangeDateOfStart = momentTimezone(req.body.dateOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+        // const ChangeDateOfEnd = momentTimezone(req.body.dateOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
+        const ChangeDateOfStart = moment(req.body.dateOfStart).subtract(9, "h").format("HH:mm")
+        const ChangeDateOfEnd = moment(req.body.dateOfEnd).subtract(9, "h").format("HH:mm")
         const itinerary = new Itinerary({
             userId: req.body.userId,
             title: req.body.title,
             city: req.body.city,
-            dateOfStart: req.body.dateOfStart,
-            dateOfEnd: req.body.dateOfEnd,
+            dateOfStart: ChangeDateOfStart,
+            dateOfEnd: ChangeDateOfEnd,
             description: req.body.description,
             isPublic: req.body.isPublic
         })
