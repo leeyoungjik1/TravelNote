@@ -41,8 +41,8 @@ router.post('/create/:itineraryByDateId', [
             title: req.body.title,
             address: req.body.address,
             category: req.body.category,
-            timeOfStart: ChangeTimeOfStart,
-            timeOfEnd: ChangeTimeOfEnd,
+            timeOfStart: req.body.timeOfStart,
+            timeOfEnd: req.body.timeOfEnd,
             description: req.body.description,
             cost: req.body.cost,
             destinationInfo: req.body.destinationInfo,
@@ -143,8 +143,8 @@ router.put('/:destinationId', [
             destination.title = req.body.title || destination.title
             destination.address = req.body.address || destination.address
             destination.category = req.body.category || destination.category
-            destination.timeOfStart = req.body.timeOfStart ? momentTimezone(req.body.timeOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : destination.timeOfStart
-            destination.timeOfEnd = req.body.timeOfEnd ? momentTimezone(req.body.timeOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : destination.timeOfEnd
+            destination.timeOfStart = req.body.timeOfStart || destination.timeOfStart
+            destination.timeOfEnd = req.body.timeOfEnd || destination.timeOfEnd
             destination.description = req.body.description || destination.description
             destination.cost = req.body.cost || destination.cost
             destination.destinationInfo = req.body.destinationInfo || destination.destinationInfo

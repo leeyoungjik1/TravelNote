@@ -44,8 +44,8 @@ router.post('/create', [
             userId: req.body.userId,
             title: req.body.title,
             city: req.body.city,
-            dateOfStart: ChangeDateOfStart,
-            dateOfEnd: ChangeDateOfEnd,
+            dateOfStart: req.body.dateOfStart,
+            dateOfEnd: req.body.dateOfEnd,
             description: req.body.description,
             isPublic: req.body.isPublic
         })
@@ -311,8 +311,8 @@ router.put('/changelist/:itineraryId', [
         }else{
             itinerary.title = req.body.title || itinerary.title
             itinerary.city = req.body.city || itinerary.city
-            itinerary.dateOfStart = req.body.dateOfStart ? momentTimezone(req.body.dateOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : itinerary.dateOfStart
-            itinerary.dateOfEnd = req.body.dateOfEnd ? momentTimezone(req.body.dateOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : itinerary.dateOfEnd
+            itinerary.dateOfStart = req.body.dateOfStart || itinerary.dateOfStart
+            itinerary.dateOfEnd = req.body.dateOfEnd || itinerary.dateOfEnd
             itinerary.description = req.body.description || itinerary.description
             itinerary.isPublic = req.body.isPublic || itinerary.isPublic
             if(req.body.isDone !== undefined){
