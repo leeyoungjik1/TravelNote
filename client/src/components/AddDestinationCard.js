@@ -80,6 +80,7 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
         }else{
             console.log(timeOfStart)
             console.log(moment(timeOfStart).local().format())
+            console.log(moment(timeOfStart).format("YYYY-MM-DD HH:mm:ss"))
             e.preventDefault()
             API.get('api/users/getId', {
                 headers: {
