@@ -5,7 +5,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const config = require('../config')
 const logger = require('morgan')
-const usersRouter = require('../src/routes/users')
+const usersRouter = require('../src/routes/Users')
 const itinerarysRouter = require('../src/routes/itinerarys')
 
 
