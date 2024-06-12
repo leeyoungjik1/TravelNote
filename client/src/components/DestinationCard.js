@@ -50,7 +50,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
                         category === '미정' && `${styles.tbd}`
                     }>{category}</div>
                     <div className={styles.time}>
-                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).subtract(9, "h").format("HH:mm")} ~ {moment(timeOfEnd).subtract(9, "h").format("HH:mm")}
+                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).format("HH:mm")} ~ {moment(timeOfEnd).format("HH:mm")}
                     </div>
                     <div className={styles.title}>{title}</div>
                     <div>{address}</div>
