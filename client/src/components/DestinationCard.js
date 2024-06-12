@@ -31,9 +31,9 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
             setImgSrc()
         }
     }, [placeId])
-    console.log(timeOfStart)
-    console.log(momentTimezone(timeOfStart).tz('Asia/Seoul').format())
-    console.log(moment(timeOfStart).subtract(9, "h").format("HH:mm"))
+    // console.log(timeOfStart)
+    // console.log(momentTimezone(timeOfStart).tz('Asia/Seoul').format())
+    // console.log(moment(timeOfStart).subtract(9, "h").format("HH:mm"))
     return (
         <div className={styles.destinationCardContainer}>
             <div className={styles.isDone}>{isDone ? "완료" : "예정"}</div>
@@ -50,7 +50,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
                         category === '미정' && `${styles.tbd}`
                     }>{category}</div>
                     <div className={styles.time}>
-                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).add(9, "h").format("HH:mm")} ~ {moment(timeOfEnd).add(9, "h").format("HH:mm")}
+                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).subtract(9, "h").format("HH:mm")} ~ {moment(timeOfEnd).subtract(9, "h").format("HH:mm")}
                     </div>
                     <div className={styles.title}>{title}</div>
                     <div>{address}</div>
