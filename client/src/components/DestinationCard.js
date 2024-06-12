@@ -31,9 +31,9 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
             setImgSrc()
         }
     }, [placeId])
-    // console.log(timeOfStart)
-    // console.log(momentTimezone(timeOfStart).tz('Asia/Seoul').format())
-    // console.log(moment(timeOfStart).subtract(9, "h").format("HH:mm"))
+    console.log(timeOfStart)
+    console.log(momentTimezone(timeOfStart).tz('Asia/Seoul').format())
+    console.log(moment(timeOfStart).subtract(9, "h").format("HH:mm"))
     return (
         <div className={styles.destinationCardContainer}>
             <div className={styles.isDone}>{isDone ? "완료" : "예정"}</div>
