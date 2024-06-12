@@ -79,7 +79,7 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
             changeSubmit(e.target.id)
         }else{
             console.log(timeOfStart)
-            console.log(moment(timeOfStart).local())
+            console.log(moment(timeOfStart).local().format())
             e.preventDefault()
             API.get('api/users/getId', {
                 headers: {
