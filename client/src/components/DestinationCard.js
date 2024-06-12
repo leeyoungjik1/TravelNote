@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios'
 import moment from 'moment'
+import momentTimezone from 'moment-timezone'
 import styles from './DestinationCard.module.css'
 import ModDestinationCard from "./ModDestinationCard";
 import { IoMdTime } from "react-icons/io";
@@ -47,7 +48,7 @@ function DestinationCard({title, address, category, timeOfStart, timeOfEnd, desc
                         category === '미정' && `${styles.tbd}`
                     }>{category}</div>
                     <div className={styles.time}>
-                        <IoMdTime size="15" color="#2F80ED"/> {moment(timeOfStart).format('HH:mm')} ~ {moment(timeOfEnd).format('HH:mm')}
+                        <IoMdTime size="15" color="#2F80ED"/> {momentTimezone(timeOfStart).tz("Asia/Seoul").format("HH:mm")} ~ {momentTimezone(timeOfEnd).tz("Asia/Seoul").format("HH:mm")}
                     </div>
                     <div className={styles.title}>{title}</div>
                     <div>{address}</div>
