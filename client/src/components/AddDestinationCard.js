@@ -87,7 +87,7 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             }).then((res) => {
-                API.post(`api/itinerarys/destination/create/${itineraryByDateId}`, {...formData, timeOfStart: moment(timeOfStart).local(), timeOfEnd: moment(timeOfEnd).local()}, {
+                API.post(`api/itinerarys/destination/create/${itineraryByDateId}`, {...formData, timeOfStart: moment(timeOfStart).format("YYYY-MM-DD HH:mm:ss"), timeOfEnd: moment(timeOfEnd).format("YYYY-MM-DD HH:mm:ss")}, {
                     headers: {
                         'Constent-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
