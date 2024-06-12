@@ -78,6 +78,8 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
         if(e.target.type === 'button'){
             changeSubmit(e.target.id)
         }else{
+            console.log(timeOfStart)
+            console.log(moment(timeOfStart).local())
             e.preventDefault()
             API.get('api/users/getId', {
                 headers: {
