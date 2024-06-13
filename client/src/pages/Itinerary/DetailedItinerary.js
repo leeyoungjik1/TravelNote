@@ -142,7 +142,7 @@ function DetailedItinerary(){
         }).then((res) => {
             API.post(`api/itinerarys/bydate/create/${params.itineraryId}`, {
                 ...formData,
-                date: moment(date).format()
+                date: moment(formData.date).format()
             }, {
                 headers: {
                     'Constent-Type': 'application/json',
@@ -170,7 +170,7 @@ function DetailedItinerary(){
             }).then((res) => {
                 API.put(`api/itinerarys/bydate/${itineraryByDate._id}`, {
                     ...formData,
-                    date: moment(date).format()
+                    date: moment(formData.date).format()
                 }, {
                     headers: {
                         'Constent-Type': 'application/json',
