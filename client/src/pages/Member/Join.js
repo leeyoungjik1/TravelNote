@@ -32,46 +32,50 @@ function Join(){
             window.location.reload()
         }).catch((err) => {
             if(err.response.data.code === 400){
-                const error = err.response.data.error
-                const msg = error[0].msg
-                console.log(msg)
-                switch (msg){
-                    case "user name length must be between 2~20 characters": 
-                        alert("이름을 2자리 이상 20자리 이하로 입력해주세요.")
-                        break
-                    case "user nick name length must be between 2~10 characters": 
-                        alert("닉네임을 2자리 이상 10자리 이하로 입력해주세요.")
-                        break
-                    case "user nick name can not use special character": 
-                        alert("닉네임에 특수문자는 사용하실 수 없습니다.")
-                        break    
-                    case "user email is not valid": 
-                        alert("이메일 형식을 다시 확인해주세요.")
-                        break    
-                    case "user id length must be between 5~10 characters": 
-                        alert("아이디를 5자리 이상 10자리 이하로 입력해주세요.")
-                        break    
-                    case "user id can not use korean": 
-                        alert("아이디에 한글은 사용하실 수 없습니다.")
-                        break    
-                    case "user id can not use special character": 
-                        alert("아이디에 특수문자는 사용하실 수 없습니다.")
-                        break    
-                    case "password length must be between 7~15 characters":
-                        alert("비밀번호를 7자리 이상 15자리 이하로 입력해주세요.")
-                        break  
-                    case "password must be at least 1 alphabet": 
-                        alert("비밀번호에 영문이 포함되어야 합니다.")
-                        break    
-                    case "password must be at least 1 number": 
-                        alert("비밀번호에 숫자가 포함되어야 합니다.")
-                        break    
-                    case "password must be at least 1 special character": 
-                        alert("비밀번호에 특수문자가 포함되어야 합니다.")
-                        break    
-                    case "passwords don't match": 
-                        alert("비밀번호 확인이 일치하지 않습니다.")
-                        break     
+                if(err.response.data.message === "아이디 중복"){
+                    alert("중복된 아이디가 있습니다.\n다른 아이디를 사용해주세요.")
+                }else{
+                    const error = err.response.data.error
+                    const msg = error[0].msg
+                    console.log(msg)
+                    switch (msg){
+                        case "user name length must be between 2~20 characters": 
+                            alert("이름을 2자리 이상 20자리 이하로 입력해주세요.")
+                            break
+                        case "user nick name length must be between 2~10 characters": 
+                            alert("닉네임을 2자리 이상 10자리 이하로 입력해주세요.")
+                            break
+                        case "user nick name can not use special character": 
+                            alert("닉네임에 특수문자는 사용하실 수 없습니다.")
+                            break    
+                        case "user email is not valid": 
+                            alert("이메일 형식을 다시 확인해주세요.")
+                            break    
+                        case "user id length must be between 5~10 characters": 
+                            alert("아이디를 5자리 이상 10자리 이하로 입력해주세요.")
+                            break    
+                        case "user id can not use korean": 
+                            alert("아이디에 한글은 사용하실 수 없습니다.")
+                            break    
+                        case "user id can not use special character": 
+                            alert("아이디에 특수문자는 사용하실 수 없습니다.")
+                            break    
+                        case "password length must be between 7~15 characters":
+                            alert("비밀번호를 7자리 이상 15자리 이하로 입력해주세요.")
+                            break  
+                        case "password must be at least 1 alphabet": 
+                            alert("비밀번호에 영문이 포함되어야 합니다.")
+                            break    
+                        case "password must be at least 1 number": 
+                            alert("비밀번호에 숫자가 포함되어야 합니다.")
+                            break    
+                        case "password must be at least 1 special character": 
+                            alert("비밀번호에 특수문자가 포함되어야 합니다.")
+                            break    
+                        case "passwords don't match": 
+                            alert("비밀번호 확인이 일치하지 않습니다.")
+                            break     
+                    }
                 }
             }
         })
