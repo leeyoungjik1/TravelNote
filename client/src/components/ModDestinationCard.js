@@ -95,7 +95,7 @@ function ModDestinationCard({destinationId, changeSubmit, isShow}){
         const { name, value} = e.target 
         setFormData({ ...formData, [name]: value })
     }
-    // 테스트
+
     // 최종 Destination 모델에 대한 데이터 서버로 전송
     const handleSubmit = (e) => {
         if(e.target.type === 'button'){
