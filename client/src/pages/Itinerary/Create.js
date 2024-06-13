@@ -37,7 +37,11 @@ function Create(){
                 const {userId, city, dateOfStart, dateOfEnd, description, isPublic} = postData
                 postData = {userId, city, dateOfStart, dateOfEnd, description, isPublic}
             }
-            API.post('api/itinerarys/create', postData, {
+            API.post('api/itinerarys/create', {
+                ...postData,
+                dateOfStart: moment(dateOfStart).format(),
+                dateOfEnd: moment(dateOfEnd).format()
+            }, {
                 headers: {
                     'Constent-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`

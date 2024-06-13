@@ -34,7 +34,11 @@ function Modify(){
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             }).then((res) => {
-                API.put(`api/itinerarys/changelist/${params.itineraryId}`, formData, {
+                API.put(`api/itinerarys/changelist/${params.itineraryId}`, {
+                    ...formData,
+                    dateOfStart: moment(dateOfStart).format(),
+                    dateOfEnd: moment(dateOfEnd).format()
+                }, {
                     headers: {
                         'Constent-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
