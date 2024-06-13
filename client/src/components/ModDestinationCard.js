@@ -38,8 +38,8 @@ function ModDestinationCard({destinationId, changeSubmit, isShow}){
                     title: res.data.title,
                     address: res.data.address,
                     category: res.data.category,
-                    timeOfStart: moment(res.data.timeOfStart).format('YYYY-MM-DD HH:mm'),
-                    timeOfEnd: moment(res.data.timeOfEnd).format('YYYY-MM-DD HH:mm'),
+                    timeOfStart: moment(res.data.timeOfStart).format(),
+                    timeOfEnd: moment(res.data.timeOfEnd).format(),
                     description: res.data.description,
                     cost: res.data.cost
                 })
@@ -109,7 +109,11 @@ function ModDestinationCard({destinationId, changeSubmit, isShow}){
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
                     }
                 }).then((res) => {
-                    API.put(`api/itinerarys/destination/${destinationId}`, formData, {
+                    API.put(`api/itinerarys/destination/${destinationId}`, {
+                        ...formData,
+                        timeOfStart: moment(timeOfStart).format(),
+                        timeOfEnd: moment(timeOfEnd).format()
+                    }, {
                         headers: {
                             'Constent-Type': 'application/json',
                             'Authorization': `Bearer ${localStorage.getItem("token")}`

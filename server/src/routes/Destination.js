@@ -33,23 +33,14 @@ router.post('/create/:itineraryByDateId', [
             error: errors.array()
         })
     }else{
-        console.log(req.body.timeOfStart)
-        console.log(typeof req.body.timeOfStart)
-        // const ChangeTimeOfStart = momentTimezone(req.body.timeOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
-        // const ChangeTimeOfEnd = momentTimezone(req.body.timeOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss")
-        var stillUtc = moment(req.body.timeOfStart).format("x")
-        var stillUtc2 = moment(req.body.timeOfEnd).format("x")
-        // const ChangeTimeOfStart = moment(stillUtc).local().format("YYYY-MM-DD HH:mm:ss")
-        // const ChangeTimeOfEnd = moment(stillUtc2).local().format("YYYY-MM-DD HH:mm:ss")
-
         // destinationIds 배열에 새로 생성된 destination id값 추가
         const itineraryByDate = await ItineraryByDate.findById(req.params.itineraryByDateId).populate('destinationIds')
         const destination = new Destination({
             title: req.body.title,
             address: req.body.address,
             category: req.body.category,
-            timeOfStart: stillUtc,
-            timeOfEnd: stillUtc2,
+            timeOfStart: req.body.timeOfStart,
+            timeOfEnd: req.body.timeOfEnd,
             description: req.body.description,
             cost: req.body.cost,
             destinationInfo: req.body.destinationInfo,
@@ -150,8 +141,8 @@ router.put('/:destinationId', [
             destination.title = req.body.title || destination.title
             destination.address = req.body.address || destination.address
             destination.category = req.body.category || destination.category
-            destination.timeOfStart = req.body.timeOfStart ? momentTimezone(req.body.timeOfStart).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : destination.timeOfStart
-            destination.timeOfEnd = req.body.timeOfEnd ? momentTimezone(req.body.timeOfEnd).tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss") : destination.timeOfEnd
+            destination.timeOfStart = req.body.timeOfStart || destination.timeOfStart
+            destination.timeOfEnd = req.body.timeOfEnd || destination.timeOfEnd
             destination.description = req.body.description || destination.description
             destination.cost = req.body.cost || destination.cost
             destination.destinationInfo = req.body.destinationInfo || destination.destinationInfo
