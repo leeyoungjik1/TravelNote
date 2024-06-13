@@ -16,7 +16,7 @@ const {
 } = require('../../validator')
 
 // URL 주소: /api/itinerarys/destination
-
+//테스트
 const router = express.Router()
 
 // 새 목적지 일정 생성
