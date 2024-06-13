@@ -38,8 +38,8 @@ function ModDestinationCard({destinationId, changeSubmit, isShow}){
                     title: res.data.title,
                     address: res.data.address,
                     category: res.data.category,
-                    timeOfStart: moment(res.data.timeOfStart).format(),
-                    timeOfEnd: moment(res.data.timeOfEnd).format(),
+                    timeOfStart: moment(res.data.timeOfStart).format('YYYY-MM-DD HH:mm'),
+                    timeOfEnd: moment(res.data.timeOfEnd).format('YYYY-MM-DD HH:mm'),
                     description: res.data.description,
                     cost: res.data.cost
                 })
