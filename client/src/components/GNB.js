@@ -6,10 +6,10 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import mainLogo from '../assets/mainLogo.png'
 
 const menus = [
-    {
-        url: '/notice',
-        name: '여행의 시작'
-    },
+    // {
+    //     url: '/notice',
+    //     name: '여행의 시작'
+    // },
     {
         url: '/itinerary/create',
         name: '새로운 여행'
