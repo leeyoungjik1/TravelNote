@@ -19,6 +19,7 @@ const {
 
 const router = express.Router()
 
+
 // 새 목적지 일정 생성
 router.post('/create/:itineraryByDateId', [
 
