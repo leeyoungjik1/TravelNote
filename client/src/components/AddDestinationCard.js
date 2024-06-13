@@ -78,9 +78,6 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
         if(e.target.type === 'button'){
             changeSubmit(e.target.id)
         }else{
-            console.log(timeOfStart)
-            console.log(moment(timeOfStart).local().format())
-            console.log(moment(timeOfStart).format())
             e.preventDefault()
             API.get('api/users/getId', {
                 headers: {
@@ -88,7 +85,12 @@ function AddDestinationCard({selectedDate, itineraryByDateId, changeSubmit, isSh
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             }).then((res) => {
-                API.post(`api/itinerarys/destination/create/${itineraryByDateId}`, {...formData, timeOfStart: moment(timeOfStart).format(), timeOfEnd: moment(timeOfEnd).format()}, {
+                API.post(`api/itinerarys/destination/create/${itineraryByDateId}`,
+                {
+                    ...formData,
+                    timeOfStart: moment(timeOfStart).format(),
+                    timeOfEnd: moment(timeOfEnd).format()
+                }, {
                     headers: {
                         'Constent-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
