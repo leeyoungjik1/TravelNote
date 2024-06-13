@@ -18,7 +18,7 @@ const {
 // URL 주소: /api/itinerarys/destination
 
 const router = express.Router()
-
+// 테스트
 
 // 새 목적지 일정 생성
 router.post('/create/:itineraryByDateId', [
