@@ -140,7 +140,10 @@ function DetailedItinerary(){
                 'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         }).then((res) => {
-            API.post(`api/itinerarys/bydate/create/${params.itineraryId}`, formData, {
+            API.post(`api/itinerarys/bydate/create/${params.itineraryId}`, {
+                ...formData,
+                date: moment(date).format()
+            }, {
                 headers: {
                     'Constent-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -165,7 +168,10 @@ function DetailedItinerary(){
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             }).then((res) => {
-                API.put(`api/itinerarys/bydate/${itineraryByDate._id}`, formData, {
+                API.put(`api/itinerarys/bydate/${itineraryByDate._id}`, {
+                    ...formData,
+                    date: moment(date).format()
+                }, {
                     headers: {
                         'Constent-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem("token")}`
