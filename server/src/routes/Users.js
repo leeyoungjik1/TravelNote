@@ -9,7 +9,8 @@ const {
     validateUserNickName,
     validateUserPassword,
     validateUserEmail,
-    validateUserId
+    validateUserId,
+    validateUserPasswordModify
 } = require('../../validator')
 
 // URL 주소: /api/users
@@ -78,11 +79,10 @@ router.post('/login', expressAsyncHandler(async (req, res, next) => {
 }))
 
 // 회원정보 수정
-router.put('/modify', oneOf([
+router.put('/modify', [
     validateUserNickName(),
-    validateUserEmail(),
-    validateUserPassword()
-]), isAuth, expressAsyncHandler(async (req, res, next) => {
+    validateUserEmail()
+], isAuth, expressAsyncHandler(async (req, res, next) => {
     const errors = validationResult(req)
     if(!errors.isEmpty()){
         console.log(errors.array())
@@ -102,6 +102,43 @@ router.put('/modify', oneOf([
             user.lastModifiedAt = moment()
     
             const updateUser = await user.save()
+
+            const {name, nickName, email, userId, isAdmin, createdAt} = user
+            res.json({
+                code: 200,
+                token: generateToken(updateUser),
+                name, nickName, email, userId, isAdmin, createdAt
+            })
+        }
+    }
+}))
+
+// 비밀번호 수정
+router.put('/modify/password', [
+    validateUserNickName(),
+    validateUserEmail(),
+    validateUserPasswordModify()
+], isAuth, expressAsyncHandler(async (req, res, next) => {
+    const errors = validationResult(req)
+    if(!errors.isEmpty()){
+        console.log(errors.array())
+        res.status(400).json({
+            code: 400,
+            message: 'Invaild Form data for user',
+            error: errors.array()
+        })
+    }else{
+        const user = await User.findById(req.user._id)
+        if(!user){
+            res.status(404).json({code: 404, message: '수정 유저 정보 없음'})
+        }else{
+            user.nickName = req.body.nickName || user.nickName
+            user.email = req.body.email || user.email
+            user.password = req.body.password || user.password
+            user.lastModifiedAt = moment()
+    
+            const updateUser = await user.save()
+
             const {name, nickName, email, userId, isAdmin, createdAt} = user
             res.json({
                 code: 200,

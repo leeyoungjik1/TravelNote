@@ -8,6 +8,7 @@ import {
   Home,
   Login,
   Join,
+  UserModify,
   ItinerMain,
   ItinerCreate,
   ItinerModify,
@@ -29,6 +30,7 @@ function App() {
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/join' element={<Join/>}/>
         <Route exact path='/login' element={<Login/>}/>
+        <Route exact path='/modify' element={<UserModify/>}/>
         <Route exact path='/itinerary' element={<ItinerMain/>}>
           <Route exact path='/itinerary/create' element={<ItinerCreate/>}/>
           <Route exact path='/itinerary/modify' element={<ItinerModify/>}>

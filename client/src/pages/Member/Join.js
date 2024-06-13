@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import  "../../styles/join.css";
 import { useNavigate } from 'react-router-dom'
 import API from '../../API'
 import styles from './Join.module.css'
@@ -34,6 +33,8 @@ function Join(){
             if(err.response.data.code === 400){
                 if(err.response.data.message === "아이디 중복"){
                     alert("중복된 아이디가 있습니다.\n다른 아이디를 사용해주세요.")
+                }else if(err.response.data.message === "이메일 형식 오류"){
+                    alert('잘못된 이메일 형식입니다.\n다시 입력해주세요.')
                 }else{
                     const error = err.response.data.error
                     const msg = error[0].msg

@@ -104,7 +104,7 @@
     width: 100%;
 }
 .active{
-    transform: scale(1.1);
+    transform: scale(1.05);
     text-decoration-line: none;
     color: #F2D680;
     position: relative;

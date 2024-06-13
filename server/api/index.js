@@ -38,6 +38,16 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     console.log(err.stack)
+    // 
+    // if(err.message){
+    //     if(err.message.includes("User validation failed: email")){
+    //         res.status(400).json({code: 400, message: '이메일 형식 오류'})
+    //     }else if(err.message.includes("User validation failed: password")){
+    //         res.status(400).json({code: 400, message: '비밀번호 형식 오류'})
+    //     }
+    // }else{
+    //     res.status(500).send('서버 에러')
+    // }
     res.status(500).send('서버 에러')
 })
 

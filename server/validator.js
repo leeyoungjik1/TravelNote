@@ -53,11 +53,28 @@ const validateUserPassword = () => {
             .withMessage("passwords don't match")
 }
 
+const validateUserPasswordModify = () => {
+    return body("password")
+    .isLength({min: 7, max: 15})
+    .withMessage(`password length must be between 7~15 characters`)
+    .bail()
+    .matches(/[A-Za-z]/)
+    .withMessage("password must be at least 1 alphabet")
+    .matches(/[0-9]/)
+    .withMessage("password must be at least 1 number")
+    .matches(/[!@#$%^&*]/)
+    .withMessage("password must be at least 1 special character")
+    .bail()
+    .custom((value, {req}) => req.body.confirmPassword === value) // 입력한 비밀번호가 같은지 재확인
+    .withMessage("passwords don't match")
+}
+
 
 module.exports = {
     validateUserName,
     validateUserNickName,
     validateUserPassword,
     validateUserEmail,
-    validateUserId
+    validateUserId,
+    validateUserPasswordModify
 }

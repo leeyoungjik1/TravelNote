@@ -69,7 +69,7 @@ const GNB = () => {
                 <div className={styles.userMenu}>
                 {user ? 
                     <>
-                        <NavLink to='/'>내 정보</NavLink> 
+                        <NavLink to='/modify'>내 정보</NavLink> 
                         <NavLink to='/' onClick={logout}>로그아웃</NavLink> 
                     </> :
                     <>
