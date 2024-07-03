@@ -23,7 +23,6 @@ import {
 
 function App() {
   return (
-    
     <div className={styles.App}>
       <GNB/>
       <Routes>
